@@ -9,8 +9,6 @@ module.exports = {
     port: 9000,
   },
   entry: './src/index.js',
-  watch: true,
-  mode: "development",
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
