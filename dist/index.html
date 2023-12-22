@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backtrack Visualizer</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="problem-container">
+        <div id="select-problem">
+            <select name="problems" id="problems">
+                <option value="Maze" selected>Maze Generator</option>
+                <option value="Path-finding">Pathfinding</option>
+            </select>
+        </div>
+    
+        <div class="maze-container" style="display: none;">
+            <div id="option-container">
+                <div>
+                    <p id="maze-number-value">20x20</p>
+                    <input id="maze-size" type="range" min="10" max="100" value="20" step="1">
+                </div>
+                <div id="algo-selection">
+                    <select name="select-algo" id="select-algo">
+                        <option value="dfs">DFS</option>
+                        <option value="prim">Prim</option>
+                        <option value="kruskal">Kruskal</option>
+                        <option value="division">Recursive Divison</option>
+                        <option value="tree">Binary Tree</option>
+                        <option value="sidewinder">Sidewinder</option>
+                    </select>
+                    <button id="create-maze">Create New Maze</button>
+                </div>
+                <div>
+                    <form action="#" id="solve-form">
+                        <select name="solve-speed" id="solve-speed">
+                            <option value="super-slow">Super Slow</option>
+                            <option value="slow" selected>Slow</option>
+                            <option value="medium">Medium</option>
+                            <option value="fast">Fast</option>
+                            <option value="super-fast">Super Fast</option>
+                        </select>
+                    </form>
+                </div>
+                <div><button id="stop-maze">Stop</button></div>
+            </div>
+            <canvas id="gridCanvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="maze-container-shortest-path" style="display: none;">
+            <div id="option-container">
+                <div>
+                    <p id="maze-number-value">30x30</p>
+                    <input id="maze-size" type="range" min="10" max="100" value="30" step="1">
+                </div>
+                <div>
+                    <select name="maze-type" id="maze-type">
+                        <option value="perfect-maze">Perfect Maze</option>
+                        <option value="scuffed-maze">Scuffed Maze</option>
+                    </select>
+                </div>
+                <div id="algo-selection">
+                    <select name="select-algo" id="select-algo">
+                        <option value="dfs">DFS</option>
+                        <option value="prim">Prim</option>
+                        <option value="kruskal">Kruskal</option>
+                        <option value="division">Recursive Divison</option>
+                        <option value="tree">Binary Tree</option>
+                        <option value="sidewinder">Sidewinder</option>
+                    </select>
+                    <button id="create-maze">Create New Maze</button>
+                </div>
+                <div>
+                    <form action="#" id="solve-form">
+                        <select name="solve-speed" id="solve-speed">
+                            <option value="slow" selected>Slow</option>
+                            <option value="medium">Medium</option>
+                            <option value="fast">Fast</option>
+                            <option value="super-fast">Super Fast</option>
+
+                        </select>
+                        <button id="solve-maze" disabled>Solve maze</button>
+                    </form>
+                </div>
+                <div><button id="stop-maze">Stop</button></div>
+            </div>
+            <div id="canvas-container">
+                <div><canvas id="grid-canvas" width="400" height="400"></canvas></div>
+                <div><canvas id="dfs-canvas" width="400" height="400"></canvas></div>
+                <div><canvas id="dijkstra-canvas" width="400" height="400"></canvas></div>
+                <div><canvas id="bfs-canvas" width="400" height="400"></canvas></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
