@@ -86,10 +86,24 @@
                 <div><button id="stop-maze">Stop</button></div>
             </div>
             <div id="canvas-container">
-                <div><canvas id="grid-canvas" width="400" height="400"></canvas></div>
-                <div><canvas id="dfs-canvas" width="400" height="400"></canvas></div>
-                <div><canvas id="dijkstra-canvas" width="400" height="400"></canvas></div>
-                <div><canvas id="bfs-canvas" width="400" height="400"></canvas></div>
+                <div class="left">
+                    <p style="margin-right: 1em ;">A*</p>
+                    <canvas id="grid-canvas" width="400" height="400"></canvas>
+                </div>
+                <div class="right">
+                    <canvas id="dfs-canvas" width="400" height="400"></canvas>
+                    <p>DFS</p>
+                </div>
+                <div class="left">
+                    <p style="margin-right: 1em ;">Dijkstra</p>
+                    <canvas id="dijkstra-canvas" width="400" height="400"></canvas>
+                </div>
+                <div class="right">
+                    <canvas id="bfs-canvas" width="400" height="400"></canvas>
+                    <p>BFS</p>
+                </div>
+            </div>
+            <div id="placeholder">
             </div>
         </div>
     </div>
