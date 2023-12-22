@@ -1,5 +1,5 @@
 
-import { solveMazeDfs, recursiveDivision, mazePrim, kruskal, binaryTree, sideWinder } from "./algorithms";
+import { solveMazeDfs, recursiveDivision, mazePrim, kruskal, binaryTree, sideWinder, setStop } from "./algorithms";
 
 const mazeContainer = document.querySelector(".maze-container");
 
@@ -8,17 +8,14 @@ const context = canvas.getContext("2d");
 
 const createMaze = mazeContainer.querySelector("#create-maze");
 
-const stopMaze = mazeContainer.querySelector("#stop-maze");
 const mazeSizeValue = mazeContainer.querySelector("#maze-number-value");
 const mazeSize = mazeContainer.querySelector("#maze-size");
 const algo = mazeContainer.querySelector("#select-algo");
 
 let isRunning = false;
 let maze;
-let stopExecution = false;
-let sizeVal = mazeSize.value;
 
-let value = 100;
+let sizeVal = mazeSize.value;
 
 
 
@@ -407,9 +404,7 @@ createMaze.addEventListener("click", async function() {
     isRunning = false;
     createMaze.disabled = false;
     
-    if (stopExecution) {
-      stopExecution = false;
-    }
+    setStop(false);
 
   }
 
@@ -421,18 +416,6 @@ mazeSize.addEventListener("input", function() {
   mazeSizeValue.textContent = `${sizeVal}x${sizeVal}`
 
 });
-
-
-
-  
-
-stopMaze.addEventListener("click", function() {
-
-  if (isRunning) {
-    stopExecution = true;
-  }
-});
-
 
 
 

@@ -91,7 +91,7 @@ export default async function createShortestPathGrid(sizeVal) {
   maze.displayMaze();
 
   maze.unvisitCells();
-  
+  stopExecution = false;
 
   mazeDijkstra = _.cloneDeep(maze);
   mazeBfs = _.cloneDeep(maze);
@@ -920,9 +920,8 @@ algo.addEventListener("change", function() {
 
 stopMaze.addEventListener("click", function() {
 
-  if (isRunning) {
-    stopExecution = true;
-  }
+  stopExecution = true;
+  
 });
 
 solveSpeed.addEventListener("change", function(event) {

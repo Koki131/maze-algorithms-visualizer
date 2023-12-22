@@ -1,9 +1,12 @@
 
 const mazeContainer = document.querySelector(".maze-container");
 
+const stop = mazeContainer.querySelector("#stop-maze");
+
 const solveSpeed = mazeContainer.querySelector("#solve-speed");
 
 let value = 250;
+let stopExecution = false;
 
 solveSpeed.addEventListener("change", function(event) {
 
@@ -25,6 +28,10 @@ solveSpeed.addEventListener("change", function(event) {
           break;
   }
 
+});
+
+stop.addEventListener("click", function() {
+  stopExecution = true;
 });
 
 
@@ -65,7 +72,7 @@ async function solveMazeDfs(maze, isAsync) {
       await sleep(value);
     }
 
-  } while (stack.length !== 0);
+  } while (stack.length !== 0 && !stopExecution);
     
 }
 
@@ -82,7 +89,7 @@ async function mazePrim(maze, isAsync) {
 
   await addNeighbours(maze, maze.grid[startRow][startCol], rows, cols, arr);
 
-  while (arr.length > 0) {
+  while (arr.length > 0 && !stopExecution) {
 
     const randIdx = Math.floor(Math.random() * arr.length);
 
@@ -161,7 +168,12 @@ async function kruskal(maze, isAsync) {
 
   for (let cell of maze.cells) {
     
+    if (stopExecution) {
+      break;
+    }
+
     for (let i = 0; i < 4; i++) {
+
 
       const row = cell.rowNum + rows[i];
       const col = cell.colNum + cols[i];
@@ -187,6 +199,10 @@ async function kruskal(maze, isAsync) {
   edges.sort(() => Math.random() - 0.5);
 
   for (let edge of edges) {
+    
+    if (stopExecution) {
+      break;
+    }
 
     const u = edge.src;
     const v = edge.dst;
@@ -263,7 +279,7 @@ class DisjointSet {
 
 async function recursiveDivision(isAsync, maze, startRow, endRow, startCol, endCol, orientation = null) {
 
-  if (true === true) {
+  if (!stopExecution) {
 
     if (startRow >= endRow || startCol >= endCol) {
       return;
@@ -375,6 +391,11 @@ async function binaryTree(maze, isAsync) {
 
 
   for (let r = 0; r < maze.rows; r++) {
+    
+    if (stopExecution) {
+      break;
+    }
+
     for (let c = 0; c < maze.cols; c++) {
 
       if (r - 1 >= 0 && c - 1 >= 0) {
@@ -418,6 +439,9 @@ async function binaryTree(maze, isAsync) {
 async function sideWinder(maze, isAsync) {
 
   for (let r = 0; r < maze.rows; r++) {
+    if (stopExecution) {
+      break;
+    }
     let start = 0;
     for (let c = 0; c < maze.cols; c++) {
 
@@ -445,9 +469,13 @@ async function sideWinder(maze, isAsync) {
 
 }
 
+function setStop(value) {
+  stopExecution = value
+}
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
-export { solveMazeDfs, recursiveDivision, mazePrim, kruskal, binaryTree, sideWinder };
+export { solveMazeDfs, recursiveDivision, mazePrim, kruskal, binaryTree, sideWinder, setStop };
