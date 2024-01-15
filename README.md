@@ -6,7 +6,7 @@ Generate mazes of various sizes using six different algorithms:
 
 - DFS
 - Prim's
-- Kurskal's
+- Kruskal's
 - Recursive Division
 - Binary Tree
 - Sidewinder
